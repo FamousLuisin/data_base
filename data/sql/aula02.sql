@@ -11,7 +11,7 @@ SELECT u.id, u.email, u.first_name from users u;
 SELECT * from users WHERE id=10;
 
 -- buscar por string
-SELECT users.id, users.first_name from users WHERE first_name="Ronoroa";
+SELECT users.id, users.first_name from users WHERE first_name="Brittany";
 
 -- Maior igual
 SELECT * from users WHERE id>=8;
@@ -20,5 +20,5 @@ SELECT * from users WHERE id>=8;
 SELECT * from users WHERE id<>8;
 
 -- Usando and e or
-SELECT * from users WHERE id<>10 and first_name="Noki";
-SELECT * from users WHERE id<>10 or first_name="Giorno";
+SELECT * from users WHERE id<>3 and first_name="Ferris";
+SELECT * from users WHERE id=3 or first_name="Aspen";
