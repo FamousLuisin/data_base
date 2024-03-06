@@ -1,6 +1,6 @@
-CREATE DATABASE `base_de_dados`;
+CREATE DATABASE `data_base`;
 
-CREATE TABLE base_de_dados.users (
+CREATE TABLE data_base.users (
 	id INT UNSIGNED auto_increment NOT NULL,
 	first_name varchar(50) NOT NULL,
 	last_name varchar(50) NULL,
@@ -11,35 +11,35 @@ CREATE TABLE base_de_dados.users (
 	CONSTRAINT users_un_password_hash UNIQUE KEY (password_hash)
 )
 
-CREATE TABLE base_de_dados.roles (
+CREATE TABLE data_base.roles (
 	id INT UNSIGNED auto_increment NOT NULL,
 	name varchar(100) NOT NULL,
 	CONSTRAINT roles_pk PRIMARY KEY (id)
 )
 
-CREATE TABLE base_de_dados.users_roles (
+CREATE TABLE data_base.users_roles (
 	user_id INT UNSIGNED NOT NULL,
 	role_id INT UNSIGNED NOT NULL,
 	CONSTRAINT users_roles_pk PRIMARY KEY (user_id,role_id),
-	CONSTRAINT users_roles_users_FK FOREIGN KEY (user_id) REFERENCES base_de_dados.users(id) ON DELETE CASCADE ON UPDATE CASCADE,
-	CONSTRAINT users_roles_roles_FK FOREIGN KEY (role_id) REFERENCES base_de_dados.roles(id) ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT users_roles_users_FK FOREIGN KEY (user_id) REFERENCES data_base.users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT users_roles_roles_FK FOREIGN KEY (role_id) REFERENCES data_base.roles(id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
-CREATE TABLE base_de_dados.profiles (
+CREATE TABLE data_base.profiles (
 	id INT UNSIGNED auto_increment NOT NULL,
 	bio TEXT NULL,
 	description TEXT NULL,
 	user_id INT UNSIGNED NULL,
 	CONSTRAINT profiles_pk PRIMARY KEY (id),
 	CONSTRAINT profiles_un UNIQUE KEY (user_id),
-	CONSTRAINT profiles_users_FK FOREIGN KEY (user_id) REFERENCES base_de_dados.users(id) ON DELETE CASCADE ON UPDATE CASCADE
+	CONSTRAINT profiles_users_FK FOREIGN KEY (user_id) REFERENCES data_base.users(id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
-ALTER TABLE base_de_dados.users ADD created_at DATETIME DEFAULT NOW() NOT NULL;
-ALTER TABLE base_de_dados.users ADD updated_at DATETIME DEFAULT now() on update now() NOT NULL;
+ALTER TABLE data_base.users ADD created_at DATETIME DEFAULT NOW() NOT NULL;
+ALTER TABLE data_base.users ADD updated_at DATETIME DEFAULT now() on update now() NOT NULL;
 
-ALTER TABLE base_de_dados.users_roles ADD created_at DATETIME DEFAULT now() NOT NULL;
-ALTER TABLE base_de_dados.users_roles ADD updated_at DATETIME DEFAULT now() on update now() NOT NULL;
+ALTER TABLE data_base.users_roles ADD created_at DATETIME DEFAULT now() NOT NULL;
+ALTER TABLE data_base.users_roles ADD updated_at DATETIME DEFAULT now() on update now() NOT NULL;
 
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4

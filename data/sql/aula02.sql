@@ -1,5 +1,5 @@
 -- Selecionar a base de dados, caso ela não esteja definida como padrão
-use base_de_dados;
+use data_base;
 
 -- Select todas colunas
 select * from users u;
