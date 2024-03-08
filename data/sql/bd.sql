@@ -41,6 +41,8 @@ ALTER TABLE data_base.users ADD updated_at DATETIME DEFAULT now() on update now(
 ALTER TABLE data_base.users_roles ADD created_at DATETIME DEFAULT now() NOT NULL;
 ALTER TABLE data_base.users_roles ADD updated_at DATETIME DEFAULT now() on update now() NOT NULL;
 
+ALTER TABLE data_base.users ADD salary DECIMAL(15,2) NULL;
+
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci;
